@@ -1,26 +1,58 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import './App.css'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import {
+  initSubscription,
+  visibleTweetProvider,
+  refreshTweets,
+  allTweetProvider,
+} from './store'
+
+class App extends Component {
+  constructor() {
+    super()
+    this.state = {
+      visibleTweets: [],
+      isNewerFeedsAvailable: false,
+    }
+  }
+  componentDidMount() {
+    initSubscription()
+    visibleTweetProvider.subscribe({
+      next: (visibleTweets) => {
+        console.log('visible tweets updated', visibleTweets)
+        this.setState({ visibleTweets })
+      },
+    })
+
+    allTweetProvider.subscribe({
+      next: (allTweets = []) => {
+        if (allTweets.length > this.state.visibleTweets.length + 5) {
+          this.setState({ isNewerFeedsAvailable: true })
+        }
+      },
+    })
+  }
+
+  loadReacentTweets = () => {
+    this.setState({ isNewerFeedsAvailable: false })
+    refreshTweets()
+  }
+  render() {
+    const { visibleTweets, isNewerFeedsAvailable } = this.state
+    return (
+      <div className="App">
+        <header className="App-header">
+          {isNewerFeedsAvailable && (
+            <button onClick={this.loadReacentTweets}>Load more tweets</button>
+          )}
+          {visibleTweets.map((tweet, index) => {
+            return <p key={`${tweet.timestamp}-${index}`}>{tweet.content}</p>
+          })}
+        </header>
+      </div>
+    )
+  }
 }
 
-export default App;
+export default App
