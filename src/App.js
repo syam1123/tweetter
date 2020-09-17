@@ -6,6 +6,7 @@ import {
   visibleTweetProvider,
   refreshTweets,
   allTweetProvider,
+  resetAllSubscription,
 } from './store'
 
 class App extends Component {
@@ -32,6 +33,12 @@ class App extends Component {
         }
       },
     })
+  }
+
+  componentWillUnmount() {
+    visibleTweetProvider.unsubscribe()
+    allTweetProvider.unsubscribe()
+    resetAllSubscription()
   }
 
   loadReacentTweets = () => {
