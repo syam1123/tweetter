@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import './App.css'
 
 import {
   initSubscription,
@@ -7,7 +6,7 @@ import {
   refreshTweets,
   allTweetProvider,
   resetAllSubscription,
-} from './store'
+} from './data-centre'
 
 class App extends Component {
   constructor() {
