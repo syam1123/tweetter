@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
+import styled from 'styled-components'
 
 import {
   initSubscription,
@@ -7,6 +8,11 @@ import {
   allTweetProvider,
   resetAllSubscription,
 } from './data-centre'
+import Header from './components/Header'
+import RecentFeedsToggle from './components/RecentFeedsToggle'
+import TweetsList from './components/TweetsList'
+import ListNavigator from './components/ListNavigator'
+import GlobalStyles from './styles/GlobalStyles'
 
 class App extends Component {
   constructor() {
@@ -48,18 +54,25 @@ class App extends Component {
   render() {
     const { visibleTweets, isNewerFeedsAvailable } = this.state
     return (
-      <div className="App">
-        <header className="App-header">
-          {isNewerFeedsAvailable && (
-            <button onClick={this.loadReacentTweets}>Load more tweets</button>
-          )}
-          {visibleTweets.map((tweet, index) => {
-            return <p key={`${tweet.timestamp}-${index}`}>{tweet.content}</p>
-          })}
-        </header>
-      </div>
+      <Fragment>
+        <GlobalStyles />
+        <Header />
+        {isNewerFeedsAvailable && (
+          <button onClick={this.loadReacentTweets}>Load more tweets</button>
+        )}
+        {visibleTweets.map((tweet, index) => {
+          return <p key={`${tweet.timestamp}-${index}`}>{tweet.content}</p>
+        })}
+        <FeedsSection>
+          <RecentFeedsToggle isVisible={isNewerFeedsAvailable} />
+          <TweetsList tweets={visibleTweets} />
+          <ListNavigator />
+        </FeedsSection>
+      </Fragment>
     )
   }
 }
 
 export default App
+
+const FeedsSection = styled.section``
