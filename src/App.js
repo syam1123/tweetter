@@ -21,14 +21,15 @@ class App extends Component {
     initSubscription()
     visibleTweetProvider.subscribe({
       next: (visibleTweets) => {
-        console.log('visible tweets updated', visibleTweets)
         this.setState({ visibleTweets })
       },
     })
 
     allTweetProvider.subscribe({
       next: (allTweets = []) => {
-        if (allTweets.length > this.state.visibleTweets.length + 5) {
+        const { visibleTweets } = this.state
+        if (allTweets.length > visibleTweets.length + 3) {
+          // If three more new tweets are available then the visibleTweets are dirty
           this.setState({ isNewerFeedsAvailable: true })
         }
       },

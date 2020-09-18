@@ -19,33 +19,48 @@ const tweets = merge(
   createTweetSource(5000, 'CommitStrip', 'Funny')
 )
 
-export const visibleTweetProvider = new BehaviorSubject([])
-export const allTweetProvider = new BehaviorSubject([])
-
 const initState = {
   tweets: [],
   visibleTweets: [],
   likedTweets: [],
 }
 
+export const visibleTweetProvider = new BehaviorSubject([])
+export const allTweetProvider = new BehaviorSubject([])
+
+/**
+ * Returns an array of tweets that are not older than the secified timestamp
+ * @param {array} tweets array of tweets from which we need to extract the recent ones
+ * @param {number} time time in milliseconds
+ */
 const getRecentTweets = (tweets, time = 30000) => {
   const recentTweets = []
   const currentTime = new Date().getTime()
-  while (true) {
+  let hasfinished = false
+  while (!hasfinished) {
+    // It is best to take the tweet from the end to reduce the complexity
+    // worst case time complexity O(n)
+    // Also, it makes the tweets in the recentTweets in the order of latest tweet first
     const lastTweet = tweets.pop()
     if (!lastTweet || !lastTweet.timestamp) {
-      initState.tweets = recentTweets
-      return recentTweets
-    }
-    if (currentTime - lastTweet.timestamp < time) {
+      hasfinished = true
+    } else if (currentTime - lastTweet.timestamp <= time) {
       recentTweets.push(lastTweet)
     } else {
-      initState.tweets = recentTweets
-      return recentTweets
+      hasfinished = true
     }
   }
+  // the tweets in the original array needed to be in the order of arrival of tweets
+  initState.tweets = [...recentTweets].reverse()
+  return recentTweets
 }
 
+/**
+ * Initiate the tweet subscription
+ * The newer tweets are being added to the top of the initState.tweets stack
+ * If the total tweets are less than 10, keep adding the newer tweets to the visibleTweets so that,
+ * the user won't be seeing the half empty screen initially
+ */
 export const initSubscription = () => {
   tweets.subscribe((tweet) => {
     initState.tweets.push(tweet)
@@ -58,14 +73,14 @@ export const initSubscription = () => {
   })
 }
 
+/**
+ * Refreshing the tweets and visibleTweets array on user request
+ * After the visibleTweets are updated, notify the component with BehaviorSubject
+ */
 export const refreshTweets = () => {
   // We only shows the tweets for the last 30 seconds
-  const allTweetsAtThisTime = [...initState.tweets]
-  console.log('allTweetsAtThisTime', allTweetsAtThisTime)
-  initState.visibleTweets = getRecentTweets(allTweetsAtThisTime, 30000)
-  console.log('initState.visibleTweets', initState.visibleTweets)
+  initState.visibleTweets = getRecentTweets(initState.tweets, 30000)
   visibleTweetProvider.next(initState.visibleTweets)
-  allTweetProvider.next(initState.tweets)
 }
 
 export const resetAllSubscription = () => {
