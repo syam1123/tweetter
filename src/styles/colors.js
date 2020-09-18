@@ -1,8 +1,6 @@
 export default {
   base: '#0a7dd8',
   white: '#ffffff',
-  red: '#ff1020',
-  darkRed: '#cf2215',
   border: '#efecec',
   blue: '#6abaf9',
   lightBlue: '#f6f6f7',

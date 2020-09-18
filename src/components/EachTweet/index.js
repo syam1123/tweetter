@@ -51,10 +51,14 @@ const Tweet = styled.li`
   border: 1px solid ${colors.border};
   border-radius: 0.5rem;
   margin: 1em 0em;
+  border-left: 0.5rem solid ${colors.lightBlue};
+  transition: all linear 0.25s;
+
   ${(props) =>
     props.isLiked &&
     css`
       box-shadow: ${colors.boxShadow};
+      border-left: 0.5rem solid ${colors.base};
     `}
 `
 
@@ -63,8 +67,6 @@ const TweetHead = styled.div`
   align-items: center;
   padding: 1em;
   background-color: ${colors.lightBlue};
-  border-top-left-radius: 0.5rem;
-  border-top-right-radius: 0.5rem;
 `
 
 const UserIcon = styled.div`
@@ -119,13 +121,13 @@ const LikeButton = styled.button`
     props.isLiked &&
     css`
       svg {
-        fill: ${colors.darkRed};
+        fill: ${colors.base};
       }
     `}
 
   &:focus {
     svg {
-      fill: ${colors.red};
+      fill: ${colors.blue};
     }
   }
 
