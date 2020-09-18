@@ -11,11 +11,7 @@ const Header = (props) => {
     <Topbar>
       <Twitter style={{ fill: colors.white }} />
       <LikeCounter>
-        {likeCount ? (
-          <Favorite style={{ fill: colors.white }} />
-        ) : (
-          <FavoriteBorderOutlined style={{ fill: colors.white }} />
-        )}
+        {likeCount ? <Favorite /> : <FavoriteBorderOutlined />}
         <p>{likeCount}</p>
       </LikeCounter>
     </Topbar>
@@ -37,15 +33,25 @@ const Topbar = styled.header`
   align-items: center;
   justify-content: space-between;
   padding: 0.2em 1em;
-  background-color: ${colors.base};
+  background-color: transparent;
   height: 60px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  width: 100vw;
 
   > svg {
     width: 3rem;
     height: 3rem;
+    z-index: 10;
   }
 
   @media ${breakPoints.tablet} {
+    background-color: ${colors.base};
+    position: relative;
+
     > svg {
       width: 2rem;
       height: 2rem;
@@ -58,9 +64,9 @@ const LikeCounter = styled.div`
   display: flex;
   align-items: center;
   padding: 0.2em 1em;
-  border: 2px solid ${colors.white};
+  border: 2px solid ${colors.base};
   border-radius: 1em;
-  color: ${colors.white};
+  color: ${colors.base};
 
   p {
     margin: 0;
@@ -70,5 +76,15 @@ const LikeCounter = styled.div`
     height: 1.25rem;
     width: 1.25rem;
     margin-right: 0.5rem;
+    fill: ${colors.base};
+  }
+
+  @media ${breakPoints.tablet} {
+    border: 2px solid ${colors.white};
+    color: ${colors.white};
+
+    svg {
+      fill: ${colors.white};
+    }
   }
 `

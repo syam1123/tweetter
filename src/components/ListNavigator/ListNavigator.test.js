@@ -4,8 +4,12 @@ import ListNavigator from '.'
 
 describe('ListNavigator', () => {
   let wrapper
+  const props = {
+    toggleTab: jest.fn(),
+    activeTab: 'all',
+  }
   beforeEach(() => {
-    wrapper = shallow(<ListNavigator />)
+    wrapper = shallow(<ListNavigator {...props} />)
   })
   test('should render correctly', () => {
     expect(wrapper).toBeTruthy()

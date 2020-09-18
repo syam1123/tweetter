@@ -1,4 +1,5 @@
-import { getIsLiked } from '../helpers'
+import { getIsLiked, getUserIconColor } from '../helpers'
+
 describe('Helpers:', () => {
   test('getIsLiked should return true', () => {
     const id = 123
@@ -20,5 +21,10 @@ describe('Helpers:', () => {
     }
     const isLiked = getIsLiked(id, liked)
     expect(isLiked).toBe(false)
+  })
+
+  test('getUserIconColor should return a color', () => {
+    const color = getUserIconColor()
+    expect(color).toBeTruthy()
   })
 })

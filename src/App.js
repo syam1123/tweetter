@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from 'react'
-import styled from 'styled-components'
 
 import {
   initSubscription,
@@ -9,10 +8,10 @@ import {
   resetAllSubscription,
 } from './data-centre'
 import Header from './components/Header'
-import RecentFeedsToggle from './components/RecentFeedsToggle'
-import TweetsList from './components/TweetsList'
 import ListNavigator from './components/ListNavigator'
 import GlobalStyles from './styles/GlobalStyles'
+import { tabs } from './helpers'
+import AllTweets from './components/AllTweets'
 
 class App extends Component {
   constructor() {
@@ -21,6 +20,7 @@ class App extends Component {
       visibleTweets: [],
       isNewerFeedsAvailable: false,
       likedTweets: {},
+      activeTab: Object.keys(tabs)[0],
     }
   }
   componentDidMount() {
@@ -52,6 +52,7 @@ class App extends Component {
   loadReacentTweets = () => {
     this.setState({ isNewerFeedsAvailable: false })
     refreshTweets()
+    window.scrollTo(0, 0)
   }
 
   toggleLike = (tweet) => {
@@ -65,26 +66,46 @@ class App extends Component {
     this.setState({ likedTweets })
   }
 
+  toggleTab = (tab) => {
+    this.setState({ activeTab: tab })
+  }
+
+  renderTabContent = () => {
+    const {
+      visibleTweets,
+      isNewerFeedsAvailable,
+      likedTweets,
+      activeTab,
+    } = this.state
+    switch (activeTab) {
+      case 'all':
+        return (
+          <AllTweets
+            visibleTweets={visibleTweets}
+            isNewerFeedsAvailable={isNewerFeedsAvailable}
+            likedTweets={likedTweets}
+            loadReacentTweets={this.loadReacentTweets}
+            toggleLike={this.toggleLike}
+          />
+        )
+
+      default:
+      // code block
+    }
+  }
+
   render() {
-    const { visibleTweets, isNewerFeedsAvailable, likedTweets } = this.state
+    const { activeTab, likedTweets } = this.state
+    const likeCount = Object.keys(likedTweets).length
     return (
       <Fragment>
         <GlobalStyles />
-        <Header />
-        <FeedsSection>
-          <RecentFeedsToggle isVisible={isNewerFeedsAvailable} />
-          <TweetsList
-            tweets={visibleTweets}
-            likedTweets={likedTweets}
-            toggleLike={this.toggleLike}
-          />
-          <ListNavigator />
-        </FeedsSection>
+        <Header likeCount={likeCount} />
+        {this.renderTabContent()}
+        <ListNavigator activeTab={activeTab} toggleTab={this.toggleTab} />
       </Fragment>
     )
   }
 }
 
 export default App
-
-const FeedsSection = styled.section``

@@ -17,3 +17,12 @@ export const getIsLiked = (id, likedObject = {}) => {
 export const getUserIconColor = () => {
   return colors.userIcons[Math.floor(Math.random() * colors.userIcons.length)]
 }
+
+/**
+ * A constant file to deliver the tabs in the sidebar
+ */
+export const tabs = {
+  all: 'All',
+  liked: 'Liked',
+  clear: 'Clear All',
+}

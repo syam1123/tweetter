@@ -29,12 +29,10 @@ const EachTweet = ({ tweet, isLiked, toggleLike }) => {
           onClick={() => {
             toggleLike(tweet)
           }}
+          tabIndex="1"
+          isLiked={isLiked}
         >
-          {isLiked ? (
-            <Favorite style={{ fill: colors.red }} />
-          ) : (
-            <FavoriteBorderOutlined style={{ fill: colors.lightGray }} />
-          )}
+          {isLiked ? <Favorite /> : <FavoriteBorderOutlined />}
         </LikeButton>
       </TweetActions>
     </Tweet>
@@ -114,6 +112,21 @@ const LikeButton = styled.button`
   svg {
     width: 1.5em;
     height: 1.5em;
+    fill: ${colors.lightGray};
+  }
+
+  ${(props) =>
+    props.isLiked &&
+    css`
+      svg {
+        fill: ${colors.darkRed};
+      }
+    `}
+
+  &:focus {
+    svg {
+      fill: ${colors.red};
+    }
   }
 
   &:hover {

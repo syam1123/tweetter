@@ -1,15 +1,18 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import RecentFeedsToggle from '.'
+import AllTweets from '.'
 
-describe('RecentFeedsToggle', () => {
+describe('AllTweets', () => {
   let wrapper
   const props = {
-    isVisible: true,
+    isNewerFeedsAvailable: false,
     loadReacentTweets: jest.fn(),
+    visibleTweets: [],
+    likedTweets: {},
+    toggleLike: jest.fn(),
   }
   beforeEach(() => {
-    wrapper = shallow(<RecentFeedsToggle {...props} />)
+    wrapper = shallow(<AllTweets {...props} />)
   })
   test('should render correctly', () => {
     expect(wrapper).toBeTruthy()
