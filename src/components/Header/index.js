@@ -4,8 +4,6 @@ import propTypes from 'prop-types'
 import { Twitter, Favorite, FavoriteBorderOutlined } from '@material-ui/icons'
 
 import { colors, breakPoints } from '../../styles'
-console.log('styles', colors, breakPoints)
-// const { colors, breakPoints } = styles
 
 const Header = (props) => {
   const { likeCount } = props
@@ -14,7 +12,7 @@ const Header = (props) => {
       <Twitter style={{ fill: colors.white }} />
       <LikeCounter>
         {likeCount ? (
-          <Favorite color="red" />
+          <Favorite style={{ fill: colors.white }} />
         ) : (
           <FavoriteBorderOutlined style={{ fill: colors.white }} />
         )}

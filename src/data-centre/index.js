@@ -3,20 +3,21 @@
 import { interval, merge, BehaviorSubject } from 'rxjs'
 import { map } from 'rxjs/operators'
 
-const createTweetSource = (frequency, account, attribute) => {
+const createTweetSource = (frequency, account, attribute, accountId) => {
   return interval(frequency).pipe(
     map((i) => ({
       account,
       timestamp: Date.now(),
       content: `${attribute} Tweet number ${i + 1}`,
+      id: `${accountId}-${Date.now()}`,
     }))
   )
 }
 
 const tweets = merge(
-  createTweetSource(5000, 'AwardsDarwin', 'Facepalm'),
-  createTweetSource(3000, 'iamdevloper', 'Expert'),
-  createTweetSource(5000, 'CommitStrip', 'Funny')
+  createTweetSource(5000, 'AwardsDarwin', 'Facepalm', '1234'),
+  createTweetSource(3000, 'iamdevloper', 'Expert', '2345'),
+  createTweetSource(5000, 'CommitStrip', 'Funny', '3456')
 )
 
 const initState = {
@@ -64,7 +65,7 @@ const getRecentTweets = (tweets, time = 30000) => {
 export const initSubscription = () => {
   tweets.subscribe((tweet) => {
     initState.tweets.push(tweet)
-    if (initState.tweets.length < 10) {
+    if (initState.tweets.length < 5) {
       // add to the beginning of the array
       initState.visibleTweets.unshift(tweet)
       visibleTweetProvider.next(initState.visibleTweets)
