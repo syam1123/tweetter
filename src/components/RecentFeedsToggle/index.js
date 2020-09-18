@@ -11,7 +11,7 @@ const RecentFeedsToggle = ({ isVisible, loadReacentTweets }) => {
   }
   return (
     <RefreshToggle>
-      <Toggle isVisible={isVisible} tabIndex="1" onClick={loadReacentTweets}>
+      <Toggle isVisible={isVisible} tabIndex="0" onClick={loadReacentTweets}>
         <ArrowUpwardIcon style={{ fill: colors.white }} /> Load Newer
       </Toggle>
     </RefreshToggle>

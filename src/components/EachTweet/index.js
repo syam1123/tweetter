@@ -29,7 +29,7 @@ const EachTweet = ({ tweet, isLiked, toggleLike }) => {
           onClick={() => {
             toggleLike(tweet)
           }}
-          tabIndex="1"
+          tabIndex="0"
           isLiked={isLiked}
         >
           {isLiked ? <Favorite /> : <FavoriteBorderOutlined />}

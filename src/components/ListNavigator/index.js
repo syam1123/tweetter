@@ -15,7 +15,7 @@ const Listnavigator = ({ activeTab, toggleTab }) => {
               key={tab}
               isActive={tab === activeTab}
               onClick={() => toggleTab(tab)}
-              tabIndex="1"
+              tabIndex="0"
             >
               {tabs[tab]}
             </Tab>
@@ -71,4 +71,5 @@ const Tab = styled.li`
   padding: 0.25em 0em;
   font-size: 1.5rem;
   color: ${(props) => (props.isActive ? colors.white : colors.blue)};
+  outline: none;
 `
