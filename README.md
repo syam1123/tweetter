@@ -14,10 +14,35 @@ This is a sample project to create a twitter like website which reads the tweets
 
 ## Additional features
 
-- Mobiile first development, fully responsive
+- Mobile first development, fully responsive
 - Fully accessible via keyboard and screen readers
 - PWA - User can install the website as an app in mobile/desktop
 
+## Lighthouse score:
+
+![image](https://firebasestorage.googleapis.com/v0/b/tweeter-16f38.appspot.com/o/lighthouse-report.png?alt=media&token=1e4f96c6-a3e4-40f2-a75a-5153886ed529)
+
 ## Live Demo
 
-Live demo is available here: https://tweeter-16f38.firebaseapp.com/
+Live demo is available here: [Demo](https://tweeter-16f38.firebaseapp.com/)
+
+## Local Development
+
+The project is created using build upon `React` using `create-react-app` and `rx.js`
+### Steps run the project locally:
+
+```
+1. clone repo
+
+2. $npm install
+
+3. $npm start
+```
+
+### Build the project and deploy:
+
+```
+1. $npm run build
+
+2. $firebase deploy
+```
