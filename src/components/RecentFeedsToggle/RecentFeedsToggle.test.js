@@ -14,4 +14,9 @@ describe('RecentFeedsToggle', () => {
   test('should render correctly', () => {
     expect(wrapper).toBeTruthy()
   })
+
+  test('Should load the newer tweets', () => {
+    wrapper.find('#feedLoader').simulate('click')
+    expect(props.loadReacentTweets).toBeCalled()
+  })
 })

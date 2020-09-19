@@ -26,6 +26,7 @@ const EachTweet = ({ tweet, isLiked, toggleLike }) => {
       <TweetContent>{tweet.content}</TweetContent>
       <TweetActions>
         <LikeButton
+          id="likeButton"
           onClick={() => {
             toggleLike(tweet)
           }}

@@ -74,12 +74,13 @@ class App extends Component {
   }
 
   clearAll = () => {
+    clearTweets()
     this.setState({
       visibleTweets: [],
       isNewerFeedsAvailable: false,
       likedTweets: {},
+      activeTab: Object.keys(tabs)[0],
     })
-    clearTweets()
   }
 
   renderTabContent = () => {

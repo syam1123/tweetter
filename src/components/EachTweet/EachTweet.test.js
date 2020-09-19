@@ -19,4 +19,10 @@ describe('EachTweet', () => {
   test('should render correctly', () => {
     expect(wrapper).toBeTruthy()
   })
+
+  test('User can like/unlike a tweet', () => {
+    const render = wrapper.dive()
+    render.find('#likeButton').simulate('click')
+    expect(props.toggleLike).toBeCalled()
+  })
 })
