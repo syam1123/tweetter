@@ -9,12 +9,14 @@ import {
   refreshTweets,
   allTweetProvider,
   resetAllSubscription,
+  clearTweets,
 } from './data-centre'
 import { tabs } from './helpers'
 const Header = loadable(() => import('./components/Header'))
 const ListNavigator = loadable(() => import('./components/ListNavigator'))
 const AllTweets = loadable(() => import('./components/AllTweets'))
 const LikedTweets = loadable(() => import('./components/LikedTweets'))
+const ClearTweets = loadable(() => import('./components/ClearTweets'))
 
 class App extends Component {
   constructor() {
@@ -73,6 +75,15 @@ class App extends Component {
     this.setState({ activeTab: tab })
   }
 
+  clearAll = () => {
+    this.setState({
+      visibleTweets: [],
+      isNewerFeedsAvailable: false,
+      likedTweets: {},
+    })
+    clearTweets()
+  }
+
   renderTabContent = () => {
     const {
       visibleTweets,
@@ -95,6 +106,8 @@ class App extends Component {
         return (
           <LikedTweets likedTweets={likedTweets} toggleLike={this.toggleLike} />
         )
+      case 'clear':
+        return <ClearTweets clearAll={this.clearAll} />
 
       default:
       // code block

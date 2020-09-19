@@ -23,7 +23,6 @@ const tweets = merge(
 const initState = {
   tweets: [],
   visibleTweets: [],
-  likedTweets: [],
 }
 
 export const visibleTweetProvider = new BehaviorSubject([])
@@ -86,4 +85,12 @@ export const refreshTweets = () => {
 
 export const resetAllSubscription = () => {
   tweets.unsubscribe()
+}
+
+/**
+ * Clear all the existing tweets in the initState
+ */
+export const clearTweets = () => {
+  initState.tweets = []
+  initState.visibleTweets = []
 }
