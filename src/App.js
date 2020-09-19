@@ -8,7 +8,6 @@ import {
   visibleTweetProvider,
   refreshTweets,
   allTweetProvider,
-  resetAllSubscription,
   clearTweets,
 } from './data-centre'
 import { tabs } from './helpers'
@@ -51,7 +50,6 @@ class App extends Component {
   componentWillUnmount() {
     visibleTweetProvider.unsubscribe()
     allTweetProvider.unsubscribe()
-    resetAllSubscription()
   }
 
   loadReacentTweets = () => {

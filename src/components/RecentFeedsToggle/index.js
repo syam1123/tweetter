@@ -38,10 +38,10 @@ const Toggle = styled.button`
   background: #132c40;
   color: white;
   border: none;
-  border-radius: 1rem;
+  border-radius: 2rem;
   padding: 0.5rem 1rem;
   font-weight: 600;
-  box-shadow: 0px 0px 6px 2px #949698;
+  box-shadow: 0px 1px 4px 1px #cccdce;
   cursor: pointer;
   z-index: 15;
   display: flex;
@@ -49,7 +49,7 @@ const Toggle = styled.button`
 
   > svg {
     height: 1.2rem;
-    margin-right: 0.5rem;
+    margin-right: 0.35rem;
   }
 
   ${(props) =>

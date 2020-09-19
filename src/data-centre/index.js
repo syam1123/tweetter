@@ -83,10 +83,6 @@ export const refreshTweets = () => {
   visibleTweetProvider.next(initState.visibleTweets)
 }
 
-export const resetAllSubscription = () => {
-  tweets.unsubscribe()
-}
-
 /**
  * Clear all the existing tweets in the initState
  */

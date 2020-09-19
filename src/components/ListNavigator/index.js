@@ -17,7 +17,8 @@ const Listnavigator = ({ activeTab, toggleTab }) => {
               onClick={() => toggleTab(tab)}
               tabIndex="0"
             >
-              {tabs[tab]}
+              {tabs[tab].icon}
+              <span>{tabs[tab].name}</span>
             </Tab>
           )
         })}
@@ -41,13 +42,14 @@ const SideBar = styled.aside`
   left: 0;
   bottom: 0;
   padding-top: 6rem;
+  box-shadow: ${colors.boxShadow};
 
   @media ${breakPoints.tablet} {
     width: 100vw;
     bottom: 0;
     top: auto;
     right: 0;
-    height: 60px;
+    height: 50px;
     padding-top: 0px;
   }
 `
@@ -63,13 +65,33 @@ const List = styled.ul`
     margin: 0;
     align-items: center;
     height: 100%;
+    max-width: 400px;
+    margin: auto;
   }
 `
 
 const Tab = styled.li`
   cursor: pointer;
-  padding: 0.25em 0em;
+  padding: 0.5em 0em;
   font-size: 1.5rem;
   color: ${(props) => (props.isActive ? colors.white : colors.blue)};
+  transition: all ease-in 0.25s;
   outline: none;
+  display: flex;
+  align-items: center;
+
+  svg {
+    margin-right: 0.5rem;
+  }
+
+  @media ${breakPoints.tablet} {
+    span {
+      display: none;
+    }
+
+    svg {
+      width: 2.5rem;
+      height: 2.5rem;
+    }
+  }
 `

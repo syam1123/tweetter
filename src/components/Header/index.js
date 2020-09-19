@@ -51,6 +51,8 @@ const Topbar = styled.header`
   @media ${breakPoints.tablet} {
     background-color: ${colors.base};
     position: relative;
+    height: 50px;
+    box-shadow: ${colors.boxShadow};
 
     > svg {
       width: 2rem;

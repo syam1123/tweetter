@@ -61,7 +61,6 @@ const ClearButton = styled.button`
   background: ${colors.base};
   padding: 0.75rem 2rem;
   border-radius: 0.2rem;
-  box-shadow: 0px 0px 4px 1px #aab7c5;
   font-size: 1.2rem;
   min-width: 100%;
   margin-top: 2rem;
@@ -70,6 +69,10 @@ const ClearButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  &:hover {
+    box-shadow: ${colors.boxShadow};
+  }
 
   svg {
     width: 1.5rem;
