@@ -128,7 +128,7 @@ const LikeButton = styled.button`
 
   &:focus {
     svg {
-      fill: ${colors.blue};
+      fill: ${colors.darkBlue};
     }
   }
 

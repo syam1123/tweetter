@@ -38,7 +38,7 @@ class App extends Component {
     allTweetProvider.subscribe({
       next: (allTweets = []) => {
         const { visibleTweets, isNewerFeedsAvailable } = this.state
-        if (allTweets.length > visibleTweets.length + 3) {
+        if (allTweets.length >= visibleTweets.length + 3) {
           // If three more new tweets are available then the visibleTweets are dirty
           if (!isNewerFeedsAvailable)
             this.setState({ isNewerFeedsAvailable: true })

@@ -64,4 +64,5 @@ $ npm run test
 - To reduce the DOM operation, I've seperated the all the incoming tweets and visibleTweets
 - First 5 tweets visible to the user is being added whenever new tweets being generated
 - After the first 5, visible tweets will be updated and presented whenever the user request it
+- New tweets can be requested when there are more than 3 tweets to be loaded
 - Liked tweets never expire until the user clear all tweets
