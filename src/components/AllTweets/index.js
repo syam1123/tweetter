@@ -1,8 +1,6 @@
-import React from 'react'
-import styled from 'styled-components'
+import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 import loadable from '@loadable/component'
-import { breakPoints } from '../../styles'
 
 const RecentFeedsToggle = loadable(() => import('../RecentFeedsToggle'))
 const TweetsList = loadable(() => import('../TweetsList'))
@@ -15,7 +13,7 @@ const AllTweets = ({
   toggleLike,
 }) => {
   return (
-    <FeedsSection>
+    <Fragment>
       <RecentFeedsToggle
         isVisible={isNewerFeedsAvailable}
         loadReacentTweets={loadReacentTweets}
@@ -25,7 +23,7 @@ const AllTweets = ({
         likedTweets={likedTweets}
         toggleLike={toggleLike}
       />
-    </FeedsSection>
+    </Fragment>
   )
 }
 
@@ -38,14 +36,3 @@ AllTweets.propTypes = {
 }
 
 export default AllTweets
-
-const FeedsSection = styled.section`
-  padding-left: 250px;
-  margin-top: 4rem;
-
-  @media ${breakPoints.tablet} {
-    padding-left: 0px;
-    margin-top: 2rem;
-    margin-bottom: 5rem;
-  }
-`

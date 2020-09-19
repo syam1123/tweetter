@@ -1,5 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import loadable from '@loadable/component'
+import styled from 'styled-components'
+import { breakPoints } from './styles'
 
 import {
   initSubscription,
@@ -12,6 +14,7 @@ import { tabs } from './helpers'
 const Header = loadable(() => import('./components/Header'))
 const ListNavigator = loadable(() => import('./components/ListNavigator'))
 const AllTweets = loadable(() => import('./components/AllTweets'))
+const LikedTweets = loadable(() => import('./components/LikedTweets'))
 
 class App extends Component {
   constructor() {
@@ -88,6 +91,10 @@ class App extends Component {
             toggleLike={this.toggleLike}
           />
         )
+      case 'liked':
+        return (
+          <LikedTweets likedTweets={likedTweets} toggleLike={this.toggleLike} />
+        )
 
       default:
       // code block
@@ -100,7 +107,7 @@ class App extends Component {
     return (
       <Fragment>
         <Header likeCount={likeCount} />
-        {this.renderTabContent()}
+        <FeedsSection>{this.renderTabContent()}</FeedsSection>
         <ListNavigator activeTab={activeTab} toggleTab={this.toggleTab} />
       </Fragment>
     )
@@ -108,3 +115,14 @@ class App extends Component {
 }
 
 export default App
+
+export const FeedsSection = styled.section`
+  padding-left: 250px;
+  margin-top: 4rem;
+
+  @media ${breakPoints.tablet} {
+    padding-left: 0px;
+    margin-top: 2rem;
+    margin-bottom: 5rem;
+  }
+`

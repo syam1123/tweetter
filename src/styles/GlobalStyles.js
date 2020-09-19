@@ -1,8 +1,16 @@
 import { createGlobalStyle } from 'styled-components'
+import breakPoints from './breakPoints'
 
 const GlobalStyles = createGlobalStyle`
   html {
     box-sizing: border-box;
+
+    @media ${breakPoints.tablet}{
+      font-size: 14px;
+    }
+    @media ${breakPoints.mobile}{
+      font-size: 12px;
+    }
   }
 
   *,
