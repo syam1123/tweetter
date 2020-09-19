@@ -15,10 +15,11 @@ const Listnavigator = ({ activeTab, toggleTab }) => {
               key={tab}
               isActive={tab === activeTab}
               onClick={() => toggleTab(tab)}
-              tabIndex="0"
             >
-              {tabs[tab].icon}
-              <span>{tabs[tab].name}</span>
+              <button tabIndex="0">
+                {tabs[tab].icon}
+                <span>{tabs[tab].name}</span>
+              </button>
             </Tab>
           )
         })}
@@ -70,28 +71,32 @@ const List = styled.ul`
   }
 `
 
-const Tab = styled.button`
-  cursor: pointer;
-  padding: 0.5em 0em;
-  font-size: 1.5rem;
-  color: ${(props) => (props.isActive ? colors.white : colors.blue)};
-  transition: all ease-in 0.25s;
+const Tab = styled.li`
   outline: none;
-  display: flex;
-  align-items: center;
-  border: none;
-  background: transparent;
-  outline: none;
+
+  button {
+    cursor: pointer;
+    padding: 0.5em 0em;
+    font-size: 1.5rem;
+    color: ${(props) => (props.isActive ? colors.white : colors.blue)};
+    transition: all ease-in 0.25s;
+    outline: none;
+    display: flex;
+    align-items: center;
+    border: none;
+    background: transparent;
+    outline: none;
+
+    &:focus {
+      outline: none;
+      svg {
+        fill: ${colors.white};
+      }
+    }
+  }
 
   svg {
     margin-right: 0.5rem;
-  }
-
-  &:focus {
-    outline: none;
-    svg {
-      fill: ${colors.white};
-    }
   }
 
   @media ${breakPoints.tablet} {

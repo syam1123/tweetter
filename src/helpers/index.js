@@ -1,7 +1,5 @@
 import React from 'react'
-import ListAltIcon from '@material-ui/icons/ListAlt'
-import FavoriteIcon from '@material-ui/icons/Favorite'
-import DeleteIcon from '@material-ui/icons/Delete'
+import { ListAlt, Favorite, Delete } from '@material-ui/icons'
 
 import { colors } from '../styles'
 
@@ -27,7 +25,7 @@ export const getUserIconColor = () => {
  * A constant file to deliver the tabs in the sidebar
  */
 export const tabs = {
-  all: { name: 'All', icon: <ListAltIcon /> },
-  liked: { name: 'Liked', icon: <FavoriteIcon /> },
-  clear: { name: 'Clear All', icon: <DeleteIcon /> },
+  all: { name: 'All', icon: <ListAlt /> },
+  liked: { name: 'Liked', icon: <Favorite /> },
+  clear: { name: 'Clear All', icon: <Delete /> },
 }
