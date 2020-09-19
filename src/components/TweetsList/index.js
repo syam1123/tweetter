@@ -4,10 +4,14 @@ import loadable from '@loadable/component'
 import styled from 'styled-components'
 
 import { getIsLiked } from '../../helpers'
+import FeedsLoader from '../FeedsLoader'
 
 const EachTweet = loadable(() => import('../EachTweet'))
 
 const TweetsList = ({ tweets, likedTweets, toggleLike }) => {
+  if (!tweets.length) {
+    return <FeedsLoader />
+  }
   return (
     <TweetContainer>
       <List>
