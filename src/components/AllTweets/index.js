@@ -1,10 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
-
-import RecentFeedsToggle from '../RecentFeedsToggle'
-import TweetsList from '../TweetsList'
+import loadable from '@loadable/component'
 import { breakPoints } from '../../styles'
+
+const RecentFeedsToggle = loadable(() => import('../RecentFeedsToggle'))
+const TweetsList = loadable(() => import('../TweetsList'))
 
 const AllTweets = ({
   isNewerFeedsAvailable,
@@ -44,7 +45,7 @@ const FeedsSection = styled.section`
 
   @media ${breakPoints.tablet} {
     padding-left: 0px;
-    margin-top: 0px;
+    margin-top: 2rem;
     margin-bottom: 5rem;
   }
 `

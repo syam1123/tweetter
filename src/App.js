@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react'
+import loadable from '@loadable/component'
 
 import {
   initSubscription,
@@ -7,11 +8,10 @@ import {
   allTweetProvider,
   resetAllSubscription,
 } from './data-centre'
-import Header from './components/Header'
-import ListNavigator from './components/ListNavigator'
-import GlobalStyles from './styles/GlobalStyles'
 import { tabs } from './helpers'
-import AllTweets from './components/AllTweets'
+const Header = loadable(() => import('./components/Header'))
+const ListNavigator = loadable(() => import('./components/ListNavigator'))
+const AllTweets = loadable(() => import('./components/AllTweets'))
 
 class App extends Component {
   constructor() {
@@ -99,7 +99,6 @@ class App extends Component {
     const likeCount = Object.keys(likedTweets).length
     return (
       <Fragment>
-        <GlobalStyles />
         <Header likeCount={likeCount} />
         {this.renderTabContent()}
         <ListNavigator activeTab={activeTab} toggleTab={this.toggleTab} />

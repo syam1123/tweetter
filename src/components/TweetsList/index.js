@@ -1,10 +1,11 @@
 import PropTypes from 'prop-types'
 import React from 'react'
+import loadable from '@loadable/component'
 import styled from 'styled-components'
 
 import { getIsLiked } from '../../helpers'
 
-import EachTweet from '../EachTweet'
+const EachTweet = loadable(() => import('../EachTweet'))
 
 const TweetsList = ({ tweets, likedTweets, toggleLike }) => {
   return (
