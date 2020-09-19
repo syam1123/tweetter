@@ -64,7 +64,8 @@ const getRecentTweets = (tweets, time = 30000) => {
 export const initSubscription = () => {
   tweets.subscribe((tweet) => {
     initState.tweets.push(tweet)
-    if (initState.tweets.length < 5) {
+    if (initState.tweets.length <= 5) {
+      // If the total loaded tweets are less than 5 immedieately add to visibleTweets
       // add to the beginning of the array
       initState.visibleTweets.unshift(tweet)
       visibleTweetProvider.next(initState.visibleTweets)

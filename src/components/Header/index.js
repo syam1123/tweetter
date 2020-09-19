@@ -12,7 +12,7 @@ const Header = (props) => {
       <Twitter style={{ fill: colors.white }} />
       <LikeCounter>
         {likeCount ? <Favorite /> : <FavoriteBorderOutlined />}
-        <p>{likeCount}</p>
+        <p area-label="Total likes">{likeCount}</p>
       </LikeCounter>
     </Topbar>
   )

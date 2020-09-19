@@ -16,7 +16,7 @@ const Listnavigator = ({ activeTab, toggleTab }) => {
               isActive={tab === activeTab}
               onClick={() => toggleTab(tab)}
             >
-              <button tabIndex="0">
+              <button tabIndex="0" aria-label={tabs[tab].name}>
                 {tabs[tab].icon}
                 <span>{tabs[tab].name}</span>
               </button>
