@@ -29,22 +29,31 @@ Live demo is available here: [Demo](https://tweeter-16f38.firebaseapp.com/)
 ## Local Development
 
 The project is created using build upon `React` using `create-react-app` and `rx.js`
+
 ### Steps run the project locally:
 
 ```
 1. clone repo
 
-2. $npm install
+2. $ npm install
 
-3. $npm start
+3. $ npm start
+```
+
+### Unit Testing:
+
+The project development was TDD. To run the tests locally:
+
+```
+$ npm run test
 ```
 
 ### Build the project and deploy:
 
 ```
-1. $npm run build
+1. $ npm run build
 
-2. $firebase deploy
+2. $ firebase deploy
 ```
 
 ## Additional Note:
