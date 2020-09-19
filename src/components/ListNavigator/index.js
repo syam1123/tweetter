@@ -70,7 +70,7 @@ const List = styled.ul`
   }
 `
 
-const Tab = styled.li`
+const Tab = styled.button`
   cursor: pointer;
   padding: 0.5em 0em;
   font-size: 1.5rem;
@@ -79,9 +79,19 @@ const Tab = styled.li`
   outline: none;
   display: flex;
   align-items: center;
+  border: none;
+  background: transparent;
+  outline: none;
 
   svg {
     margin-right: 0.5rem;
+  }
+
+  &:focus {
+    outline: none;
+    svg {
+      fill: ${colors.white};
+    }
   }
 
   @media ${breakPoints.tablet} {
