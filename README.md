@@ -46,3 +46,13 @@ The project is created using build upon `React` using `create-react-app` and `rx
 
 2. $firebase deploy
 ```
+
+## Additional Note:
+
+- This is my first ever RxJs project. I may have missed many best practices in RxJs
+- The logic `createTweetSource` was not suppossed to be edited
+- Added one more field `id` to the tweets generated for better managing and identification
+- To reduce the DOM operation, I've seperated the all the incoming tweets and visibleTweets
+- First 5 tweets visible to the user is being added whenever new tweets being generated
+- After the first 5, visible tweets will be updated and presented whenever the user request it
+- Liked tweets never expire until the user clear all tweets
