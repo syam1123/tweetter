@@ -122,13 +122,13 @@ const LikeButton = styled.button`
     props.isLiked &&
     css`
       svg {
-        fill: ${colors.base};
+        fill: ${colors.darkRed};
       }
     `}
 
   &:focus {
     svg {
-      fill: ${colors.darkBlue};
+      fill: ${colors.red};
     }
   }
 

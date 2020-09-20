@@ -78,7 +78,7 @@ const Tab = styled.li`
     cursor: pointer;
     padding: 0.5em 0em;
     font-size: 1.5rem;
-    color: ${(props) => (props.isActive ? colors.white : colors.blue)};
+    color: ${(props) => (props.isActive ? colors.white : colors.baseLight)};
     transition: all ease-in 0.25s;
     outline: none;
     display: flex;

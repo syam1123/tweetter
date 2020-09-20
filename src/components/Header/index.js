@@ -78,7 +78,7 @@ const LikeCounter = styled.div`
     height: 1.25rem;
     width: 1.25rem;
     margin-right: 0.5rem;
-    fill: ${colors.base};
+    fill: ${colors.darkRed};
   }
 
   @media ${breakPoints.tablet} {

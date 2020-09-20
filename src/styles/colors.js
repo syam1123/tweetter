@@ -1,9 +1,10 @@
 export default {
-  base: '#0c23a5',
+  base: '#24292e',
   white: '#ffffff',
   border: '#efecec',
-  blue: '#6abaf9',
-  darkBlue: '#1b43f7',
+  baseLight: '#5c666d',
+  red: '#bf1b0e',
+  darkRed: '#8c140b',
   lightBlue: '#f6f6f7',
   gray: '#808080',
   lightGray: '#b1aeae',
